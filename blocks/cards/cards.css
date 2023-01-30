@@ -11,3 +11,17 @@
   margin-top: 51px;
   margin-bottom: 67px;
 }
+
+@media screen and (max-width: 920px) {
+  .cards {
+    width: calc(100% - 38px);
+    column-gap: 13px;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .cards {
+    margin-top: 36px;
+    margin-bottom: 48px;
+  }
+}

@@ -8,3 +8,16 @@
   text-align: center;
   cursor: pointer;
 }
+
+@media screen and (max-width: 630px) {
+  .profile__add-btn {
+    width: 60%;
+    margin-top: 36px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profile__add-btn {
+    width: 100%;
+  }
+}

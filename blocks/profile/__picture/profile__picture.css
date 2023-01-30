@@ -3,3 +3,11 @@
   height: 10px;
   margin: 6px;
 }
+
+@media screen and (max-width: 768px) {
+  .profile__picture {
+    width: 7.5px;
+    height: 7.5px;
+    margin: 4.25px;
+  }
+}
