@@ -12,11 +12,22 @@
   color: #FFF;
   padding: 0;
   margin-bottom: 37px;
-  margin-top: 18px;
+  margin-top: 48px;
   opacity: 1;
 }
 
 .popup__submit:hover {
   opacity: 0.8;
   transition: 0.5s linear 0.2s;
+}
+
+@media screen and (max-width: 768px) {
+  .popup__submit {
+    width: 238px;
+    height: 46px;
+    margin-top: 45px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
