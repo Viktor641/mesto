@@ -58,4 +58,4 @@ __4__. ```Popup``` эффект
   </section>
 ```
 __Ссылка на проект__
-https://viktor641.github.io/mesto/
+https://viktor641.github.io/mesto/index.html
