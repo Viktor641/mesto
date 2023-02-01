@@ -21,15 +21,15 @@ closeButton.addEventListener("click", handleCloseButtonClick);
 let formElement = document.querySelector('.popup__form');
 let profileText = document.querySelector('.profile__text');
 let profilParagraph = document.querySelector('.profile__paragraph');
-let nameInput = document.querySelector('#name');
-let jobInput = document.querySelector('#job');
+let nameInput = document.querySelector('.popup__input_type_name');
+let jobInput = document.querySelector('.popup__input_type_job');
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
 
   profileText.value = '';
   profilParagraph.value = '';
-
+  
   profileText.textContent = `${nameInput.value}`;
   profilParagraph.textContent = `${jobInput.value}`;
   

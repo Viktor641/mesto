@@ -7,6 +7,8 @@
   background-image: url(../../../images/like.svg);
   background-size: contain;
   background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
 }
 
 .card__like:hover {

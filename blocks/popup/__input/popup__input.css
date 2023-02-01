@@ -1,6 +1,5 @@
 .popup__input {
-  width: 358px;
-  height: 27px;
+  max-width: 358px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
@@ -10,7 +9,8 @@
   padding: 0;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
+  padding-bottom: 10px;
+  margin-bottom: 28px;
 }
 
 .popup__input:nth-child(2) {
@@ -19,6 +19,6 @@
 
 @media screen and (max-width: 768px) {
   .popup__input {
-    width: 238px;
+    max-width: 238px;
   }
 }
