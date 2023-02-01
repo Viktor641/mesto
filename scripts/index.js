@@ -32,6 +32,7 @@ function handleFormSubmit(evt) {
 
   profileText.textContent = `${nameInput.value}`;
   profilParagraph.textContent = `${jobInput.value}`;
+  
   toggleOpenPopup();
 };
 

@@ -2,8 +2,11 @@
   width: 22px;
   height: 19px;
   margin-right: 5px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
   cursor: pointer;
+  background-image: url(../../../images/like.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .card__like:hover {
