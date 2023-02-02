@@ -7,6 +7,8 @@ const toggleOpenPopup = () => {
 };
 
 const handleEditButtonClick = () => {
+  nameInput.value = `${profileText.textContent}`;
+  jobInput.value = `${profilParagraph.textContent}`;
   toggleOpenPopup();
 };
 
@@ -29,10 +31,10 @@ function handleFormSubmit(evt) {
 
   profileText.value = '';
   profilParagraph.value = '';
-  
+
   profileText.textContent = `${nameInput.value}`;
   profilParagraph.textContent = `${jobInput.value}`;
-  
+
   toggleOpenPopup();
 };
 
