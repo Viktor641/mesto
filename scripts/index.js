@@ -1,9 +1,9 @@
 const EditButton = document.querySelector(".profile__edit-btn");
-const AddButton = document.querySelector('.profile__add-btn')
+const AddButton = document.querySelector('.profile__add-btn');
 const popup = document.querySelector(".popup");
 const popupAddbutton = document.querySelector(".popup__addbutton");
 const closeButton = document.querySelector(".popup__close");
-const closeButtonTwo = document.querySelector(".popup__close_type_two");
+const closeButtonCard = document.querySelector(".popup__close_type_card");
 
 const toggleOpenPopup = () => {
   popup.classList.toggle("popup_opened");
@@ -27,7 +27,7 @@ const handleCloseButtonClick = () => {
   toggleOpenPopup();
 };
 
-const handlecloseButtonTwoClick = () => {
+const handleCloseButtonCardClick = () => {
   toggleOpenPopupAddbutton();
 };
 
@@ -35,7 +35,7 @@ const handlecloseButtonTwoClick = () => {
 EditButton.addEventListener("click", handleEditButtonClick);
 AddButton.addEventListener("click", handleAddButtonClick);
 closeButton.addEventListener("click", handleCloseButtonClick);
-closeButtonTwo.addEventListener("click", handlecloseButtonTwoClick);
+closeButtonCard.addEventListener("click", handleCloseButtonCardClick);
 
 // Находим форму в DOM
 const formElement = document.querySelector('.popup__form');
@@ -43,12 +43,6 @@ const profileText = document.querySelector('.profile__text');
 const profilParagraph = document.querySelector('.profile__paragraph');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
-
-
-
-const titleInput = document.querySelector('.popup__input_type_title');
-const linkInput = document.querySelector('.popup__input_type_link');
-
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
@@ -59,10 +53,24 @@ function handleFormSubmit(evt) {
   profileText.textContent = `${nameInput.value}`;
   profilParagraph.textContent = `${jobInput.value}`;
 
-  titleInput.value = '';
-  cardParagraph.textContent = `${titleInput.value}`;
-
   toggleOpenPopup();
 };
 
 formElement.addEventListener('submit', handleFormSubmit);
+
+
+
+const cardImage = document.querySelector(".card__image");
+const popupPicture = document.querySelector(".popup__picture");
+const closeButtonPicture = document.querySelector(".popup__close_type_picture");
+
+const toggleOpenPopupPicture = () => {
+  popupPicture.classList.toggle("popup_opened");
+};
+
+const handleCloseButtonPictureClick = () => {
+  toggleOpenPopupPicture();
+};
+
+cardImage.addEventListener("click", toggleOpenPopupPicture);
+closeButtonPicture.addEventListener("click", handleCloseButtonPictureClick);

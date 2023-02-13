@@ -1,45 +1,80 @@
 const cards = document.querySelector('.cards');
-const cardForm = document.querySelector('.popup__form_type_card');
-const directorTemplate = document.querySelector('#card-template');
+const CardformElement = document.querySelector('.popup__form_type_card');
+const template = document.querySelector('#card-template');
 
 
 const initialCards = [
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
     name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    link: './images/daniil-silantev-h-M3O25tyvI-unsplash.jpg'
   },
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Алтай',
+    link: './images/pavel-marianov-xnS4IPCwFjg-unsplash(1).jpg'
   },
   {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'Судак',
+    link: './images/nikolay-vorobyev-o7jIzNWvCRo-unsplash.jpg'
+  },
+  {
+    name: 'Сочи',
+    link: './images/ana-kai-QXOl2IXJ_ow-unsplash.jpg'
+  },
+  {
+    name: 'Самара',
+    link: './images/pavel-seliverstov-tXTiIjnLTrY-unsplash.jpg'
+  },
+  {
+    name: 'Иркутская область',
+    link: './images/ekaterina-sazonova-eAZOKkEhzDg-unsplash.jpg'
   }
 ];
 
 
+const handleDelete = (evt) => {
+  evt.target.closest('.card').remove();
+}
+
 initialCards.forEach(function (element) {
-  const newElement = directorTemplate.content.cloneNode(true);
+  const newElement = template.content.cloneNode(true);
 
   newElement.querySelector('.card__paragraph').textContent = element.name;
-  newElement.querySelector('.card__image').href = element.link;
+  newElement.querySelector('.card__image').src = element.link;
 
   newElement.querySelector('.card__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('card__like_active');
   });
 
+  const deleteButton = newElement.querySelector('.card__delete');
+  deleteButton.addEventListener('click', handleDelete);
+
   cards.append(newElement);
 });
+
+const titleInput = document.querySelector('.popup__input_type_title');
+const linkInput = document.querySelector('.popup__input_type_link');
+
+
+CardformElement.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const newElement = template.content.cloneNode(true);
+
+
+  newElement.querySelector('.card__paragraph').textContent = `${titleInput.value}`;
+  newElement.querySelector('.card__image').src = `${linkInput.value}`;
+
+  newElement.querySelector('.card__like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('card__like_active');
+  });
+
+  const deleteButton = newElement.querySelector('.card__delete');
+  deleteButton.addEventListener('click', handleDelete);
+
+  cards.prepend(newElement);
+
+  titleInput.value = '';
+  linkInput.value = '';
+
+  toggleOpenPopupAddbutton();
+});
+
