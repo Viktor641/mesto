@@ -45,7 +45,7 @@ const toggleOpenPopup = () => {
 
 __4__. ```Popup``` эффект
 ```html
-<section class="popup">
+  <section class="popup">
     <div class="popup__container">
       <button class="popup__close button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
@@ -57,5 +57,19 @@ __4__. ```Popup``` эффект
     </div>
   </section>
 ```
+__5__. Добавление Элементов с помощью ```template```
+```html
+  <template id="card-template">
+    <div class="card">
+      <img src="./images/daniil-silantev-h-M3O25tyvI-unsplash.jpg" alt="Камчатка" class="card__image">
+      <button type="button" class="card__delete"></button>
+      <div class="card__item">
+        <h2 class="card__paragraph"></h2>
+        <button type="button" class="card__like"></button>
+      </div>
+    </div>
+  </template>
+```
+
 __Ссылка на проект__
 https://viktor641.github.io/mesto/index.html
