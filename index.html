@@ -34,13 +34,13 @@
       </div>
     </section>
     <section class="cards">
-      
+
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <div class="popup popup__edit">
     <div class="popup__container">
       <button type="button" class="popup__close button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
@@ -58,18 +58,19 @@
       <button type="button" class="popup__close button popup__close_type_card"></button>
       <h2 class="popup__title">Новое место</h2>
       <form name="formAdd" class="popup__form popup__form_type_card">
-        <input class="popup__input popup__input_type_title" type="title" id="title" name="title" placeholder="Название"
+        <input class="popup__input popup__input_type_title" type="text" id="title" name="title" placeholder="Название"
           value="" required>
-        <input class="popup__input popup__input_type_link" type="link" id="link" name="link"
+        <input class="popup__input popup__input_type_link" type="url" id="link" name="link"
           placeholder="Ссылка на картинку" value="" required>
         <button type="submit" class="popup__submit">Создать</button>
       </form>
     </div>
   </div>
   <div class="popup popup__picture">
-    <div class="popup__container">
+    <div class="popup__container popup__container_type_overlay">
+      <img src="./images/nikolay-vorobyev-o7jIzNWvCRo-unsplash.jpg" alt="картинка" class="popup__image">
       <button type="button" class="popup__close button popup__close_type_picture"></button>
-      <h2 class="popup__title">Редактировать профиль</h2>
+      <h2 class="popup__paragraph"></h2>
     </div>
   </div>
   <template id="card-template">

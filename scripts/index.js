@@ -60,17 +60,4 @@ formElement.addEventListener('submit', handleFormSubmit);
 
 
 
-const cardImage = document.querySelector(".card__image");
-const popupPicture = document.querySelector(".popup__picture");
-const closeButtonPicture = document.querySelector(".popup__close_type_picture");
 
-const toggleOpenPopupPicture = () => {
-  popupPicture.classList.toggle("popup_opened");
-};
-
-const handleCloseButtonPictureClick = () => {
-  toggleOpenPopupPicture();
-};
-
-cardImage.addEventListener("click", toggleOpenPopupPicture);
-closeButtonPicture.addEventListener("click", handleCloseButtonPictureClick);

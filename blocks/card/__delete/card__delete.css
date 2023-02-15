@@ -13,3 +13,8 @@
   color: #FFF;
   background-color: transparent;
 }
+
+.card__delete:hover {
+  opacity: 0.6;
+  transition: 0.5s linear 0.2s;
+}
