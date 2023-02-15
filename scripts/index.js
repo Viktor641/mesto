@@ -1,7 +1,7 @@
 const EditButton = document.querySelector(".profile__edit-btn");
 const AddButton = document.querySelector('.profile__add-btn');
 const popup = document.querySelector(".popup");
-const popupAddbutton = document.querySelector(".popup__addbutton");
+const popupAddbutton = document.querySelector(".popup_theme_addbutton");
 const closeButton = document.querySelector(".popup__close");
 const closeButtonCard = document.querySelector(".popup__close_type_card");
 

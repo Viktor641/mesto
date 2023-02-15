@@ -31,7 +31,7 @@ const initialCards = [
 ];
 
 
-const popupPicture = document.querySelector(".popup__picture");
+const popupPicture = document.querySelector(".popup_theme_picture");
 const closeButtonPicture = document.querySelector(".popup__close_type_picture");
 const popupParagraph = document.querySelector(".popup__paragraph");
 const popupImage = document.querySelector(".popup__image");
