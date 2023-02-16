@@ -1,12 +1,14 @@
-const EditButton = document.querySelector(".profile__edit-btn");
-const AddButton = document.querySelector('.profile__add-btn');
-const popup = document.querySelector(".popup");
+const editButton = document.querySelector(".profile__edit-btn");
+const addButton = document.querySelector('.profile__add-btn');
+const profilePopup = document.querySelector(".popup_theme_edit");
 const popupAddbutton = document.querySelector(".popup_theme_addbutton");
-const closeButton = document.querySelector(".popup__close");
+const profileCloseButton = document.querySelector(".popup__close");
 const closeButtonCard = document.querySelector(".popup__close_type_card");
 
+
+
 const toggleOpenPopup = () => {
-  popup.classList.toggle("popup_opened");
+  openPopup(profilePopup);
 };
 
 const handleEditButtonClick = () => {
@@ -16,48 +18,41 @@ const handleEditButtonClick = () => {
 };
 
 const toggleOpenPopupAddbutton = () => {
-  popupAddbutton.classList.toggle("popup_opened");
+  openPopup(popupAddbutton);
 };
 
 const handleAddButtonClick = () => {
-  toggleOpenPopupAddbutton();
+  openPopup(popupAddbutton);
 };
 
 const handleCloseButtonClick = () => {
-  toggleOpenPopup();
+  closePopup(profilePopup);
 };
 
 const handleCloseButtonCardClick = () => {
-  toggleOpenPopupAddbutton();
+  closePopup(popupAddbutton);
 };
 
 
-EditButton.addEventListener("click", handleEditButtonClick);
-AddButton.addEventListener("click", handleAddButtonClick);
-closeButton.addEventListener("click", handleCloseButtonClick);
+editButton.addEventListener("click", handleEditButtonClick);
+addButton.addEventListener("click", handleAddButtonClick);
+profileCloseButton.addEventListener("click", handleCloseButtonClick);
 closeButtonCard.addEventListener("click", handleCloseButtonCardClick);
 
 // Находим форму в DOM
-const formElement = document.querySelector('.popup__form');
+const profileForm = document.querySelector('.popup__form');
 const profileText = document.querySelector('.profile__text');
 const profilParagraph = document.querySelector('.profile__paragraph');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 
-function handleFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-
-  profileText.value = '';
-  profilParagraph.value = '';
 
   profileText.textContent = `${nameInput.value}`;
   profilParagraph.textContent = `${jobInput.value}`;
 
-  toggleOpenPopup();
+  handleCloseButtonClick();
 };
 
-formElement.addEventListener('submit', handleFormSubmit);
-
-
-
-
+profileForm.addEventListener('submit', handleProfileFormSubmit);

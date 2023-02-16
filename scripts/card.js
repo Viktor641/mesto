@@ -1,5 +1,5 @@
 const cards = document.querySelector('.cards');
-const CardformElement = document.querySelector('.popup__form_type_card');
+const cardFormElement = document.querySelector('.popup__form_type_card');
 const template = document.querySelector('#card-template');
 
 
@@ -37,13 +37,22 @@ const popupParagraph = document.querySelector(".popup__paragraph");
 const popupImage = document.querySelector(".popup__image");
 
 
+const popup = document.querySelectorAll('.popup')
+
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+};
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
 
 const toggleOpenPopupPicture = () => {
-  popupPicture.classList.toggle("popup_opened");
+  openPopup(popupPicture);
 };
 
 const handleCloseButtonPictureClick = () => {
-  toggleOpenPopupPicture();
+  closePopup(popupPicture);
 };
 
 closeButtonPicture.addEventListener("click", handleCloseButtonPictureClick);
@@ -52,13 +61,14 @@ const handleDelete = (evt) => {
   evt.target.closest('.card').remove();
 }
 
-initialCards.forEach(function (element) {
+function createCard(item) {
   const newElement = template.content.cloneNode(true);
   const cardImage = newElement.querySelector(".card__image");
   const cardParagraph = newElement.querySelector(".card__paragraph");
 
-  cardParagraph.textContent = element.name;
-  cardImage.src = element.link;
+  cardParagraph.textContent = item.name;
+  cardImage.src = item.link;
+  cardImage.alt = item.name;
 
   newElement.querySelector('.card__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('card__like_active');
@@ -68,20 +78,26 @@ initialCards.forEach(function (element) {
   deleteButton.addEventListener('click', handleDelete);
 
   cardImage.addEventListener('click', function () {
-    popupImage.src = element.link;
-    popupImage.alt = element.name;
-    popupParagraph.textContent = element.name;
+    popupImage.src = item.link;
+    popupImage.alt = item.name;
+    popupParagraph.textContent = item.name;
     toggleOpenPopupPicture();
   });
+  return newElement;
+}
 
+
+initialCards.forEach(function (element) {
+  const newElement = createCard(element);
   cards.append(newElement);
 });
+
 
 const titleInput = document.querySelector('.popup__input_type_title');
 const linkInput = document.querySelector('.popup__input_type_link');
 
 
-CardformElement.addEventListener('submit', (evt) => {
+cardFormElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const newElement = template.content.cloneNode(true);
   const cardImage = newElement.querySelector(".card__image");
@@ -109,6 +125,5 @@ CardformElement.addEventListener('submit', (evt) => {
   titleInput.value = '';
   linkInput.value = '';
 
-  toggleOpenPopupAddbutton();
+  handleCloseButtonCardClick();
 });
-
