@@ -37,14 +37,14 @@ const popupParagraph = document.querySelector(".popup__paragraph");
 const popupImage = document.querySelector(".popup__image");
 
 
-const popup = document.querySelectorAll('.popup')
+const popups = document.querySelectorAll('.popup')
 
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
+function openPopup(popups) {
+  popups.classList.add('popup_opened');
 };
 
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
+function closePopup(popups) {
+  popups.classList.remove('popup_opened');
 }
 
 const toggleOpenPopupPicture = () => {
@@ -99,31 +99,15 @@ const linkInput = document.querySelector('.popup__input_type_link');
 
 cardFormElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  const newElement = template.content.cloneNode(true);
-  const cardImage = newElement.querySelector(".card__image");
-  const cardParagraph = newElement.querySelector(".card__paragraph");
-
-  cardParagraph.textContent = `${titleInput.value}`;
-  cardImage.src = `${linkInput.value}`;
-
-  newElement.querySelector('.card__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('card__like_active');
-  });
-
-  const deleteButton = newElement.querySelector('.card__delete');
-  deleteButton.addEventListener('click', handleDelete);
-
-  cardImage.addEventListener('click', function () {
-    popupImage.src = `${cardImage.src}`;
-    popupImage.alt = cardParagraph.textContent;
-    popupParagraph.textContent = cardParagraph.textContent;
-    toggleOpenPopupPicture();
-  });
+  const item = {
+    name: titleInput.value,
+    link: linkInput.value
+  }
+  const newElement = createCard(item);
 
   cards.prepend(newElement);
 
-  titleInput.value = '';
-  linkInput.value = '';
+  evt.target.reset();
 
   handleCloseButtonCardClick();
 });

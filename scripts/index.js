@@ -7,18 +7,14 @@ const closeButtonCard = document.querySelector(".popup__close_type_card");
 
 
 
-const toggleOpenPopup = () => {
+const openProfilePopup = () => {
   openPopup(profilePopup);
 };
 
 const handleEditButtonClick = () => {
   nameInput.value = `${profileText.textContent}`;
   jobInput.value = `${profilParagraph.textContent}`;
-  toggleOpenPopup();
-};
-
-const toggleOpenPopupAddbutton = () => {
-  openPopup(popupAddbutton);
+  openProfilePopup();
 };
 
 const handleAddButtonClick = () => {
