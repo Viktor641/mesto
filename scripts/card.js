@@ -37,15 +37,19 @@ const popupParagraph = document.querySelector(".popup__paragraph");
 const popupImage = document.querySelector(".popup__image");
 
 
-const popups = document.querySelectorAll('.popup')
+const popups = document.querySelectorAll('.popup');
+
 
 function openPopup(popups) {
   popups.classList.add('popup_opened');
+  document.addEventListener('keydown', escapeClosePopup);
+  popups.addEventListener('click', overlayClosePopup);
 };
 
 function closePopup(popups) {
   popups.classList.remove('popup_opened');
-}
+  document.removeEventListener('keydown', escapeClosePopup);
+};
 
 const toggleOpenPopupPicture = () => {
   openPopup(popupPicture);
@@ -61,10 +65,29 @@ const handleDelete = (evt) => {
   evt.target.closest('.card').remove();
 }
 
+function overlayClosePopup(evt) {
+  const popup = Array.from(document.querySelectorAll('.popup'));
+  if (evt.currentTarget === evt.target) {
+    popup.forEach((popup) => {
+      closePopup(popup);
+    })
+  }
+}
+
+function escapeClosePopup(evt) {
+  const popup = Array.from(document.querySelectorAll('.popup'));
+  if (evt.key === 'Escape') {
+    popup.forEach((popup) => {
+      closePopup(popup);
+    })
+  }
+}
+
 function createCard(item) {
   const newElement = template.content.cloneNode(true);
   const cardImage = newElement.querySelector(".card__image");
   const cardParagraph = newElement.querySelector(".card__paragraph");
+  const cardClose = newElement.querySelector(".card__close");
 
   cardParagraph.textContent = item.name;
   cardImage.src = item.link;
@@ -83,6 +106,9 @@ function createCard(item) {
     popupParagraph.textContent = item.name;
     toggleOpenPopupPicture();
   });
+
+  cardClose.addEventListener('keydown', escapeClosePopup);
+
   return newElement;
 }
 

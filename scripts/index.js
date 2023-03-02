@@ -4,7 +4,7 @@ const profilePopup = document.querySelector(".popup_theme_edit");
 const popupAddbutton = document.querySelector(".popup_theme_addbutton");
 const profileCloseButton = document.querySelector(".popup__close");
 const closeButtonCard = document.querySelector(".popup__close_type_card");
-
+const cardImage = document.querySelector(".card__image");
 
 
 const openProfilePopup = () => {
@@ -28,7 +28,6 @@ const handleCloseButtonClick = () => {
 const handleCloseButtonCardClick = () => {
   closePopup(popupAddbutton);
 };
-
 
 editButton.addEventListener("click", handleEditButtonClick);
 addButton.addEventListener("click", handleAddButtonClick);

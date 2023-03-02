@@ -17,6 +17,7 @@
 @import url(../blocks/profile/__btn-image/profile__btn-image.css);
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/card/card.css);
+@import url(../blocks/card/__close/card__close.css);
 @import url(../blocks/card/__delete/card__delete.css);
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__item/card__item.css);
@@ -40,3 +41,7 @@
 @import url(../blocks/popup/__container/_type/popup__container_type_overlay.css);
 @import url(../blocks/popup/__paragraph/popup__paragraph.css);
 @import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__submit/_disabled/popup__submit_disabled.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_error.css);
+@import url(../blocks/popup/__error/popup__error.css);
+@import url(../blocks/popup/__error/_visible/popup__error_visible.css);
