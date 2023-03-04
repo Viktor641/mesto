@@ -24,6 +24,11 @@ function formValidation(config) {
       toggleButton(form, config);
     })
   
+    form.addEventListener('reset', () => {
+      setTimeout(() => {
+        toggleButton(form, config);
+    }), '0'})
+
     setInputListeners(form, config);
     toggleButton(form, config);
   })
@@ -37,9 +42,11 @@ function toggleButton(form, config){
   buttonSubmit.disabled = !isFormValid;
 
   if (!isFormValid) {
-    buttonSubmit.classList.add('popup__submit_disabled');
+    buttonSubmit.classList.add(config.inactiveButtonClass);
+    buttonSubmit.setAttribute("disabled", "");
   } else {
-    buttonSubmit.classList.remove('popup__submit_disabled');
+    buttonSubmit.classList.remove(config.inactiveButtonClass);
+    buttonSubmit.removeAttribute("disabled", "");
   }
 }
 
@@ -51,6 +58,7 @@ function isValid(evt, config) {
 
   if (input.validity.valid) {
     input.classList.remove(config.inputErrorClass);
+    ErrorElement.textContent = " ";
     ErrorElement.classList.remove(config.errorClass);
   } else {
     input.classList.add(config.inputErrorClass);
@@ -68,7 +76,6 @@ function setInputListeners(form, config) {
       isValid(evt, config)
     });
   });
-
 };
 
 formValidation(enableValidation);

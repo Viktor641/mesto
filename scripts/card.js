@@ -43,12 +43,13 @@ const popups = document.querySelectorAll('.popup');
 function openPopup(popups) {
   popups.classList.add('popup_opened');
   document.addEventListener('keydown', escapeClosePopup);
-  popups.addEventListener('click', overlayClosePopup);
+  popups.addEventListener('mousedown', overlayClosePopup);
 };
 
 function closePopup(popups) {
   popups.classList.remove('popup_opened');
   document.removeEventListener('keydown', escapeClosePopup);
+  popups.removeEventListener('mousedown', overlayClosePopup);
 };
 
 const toggleOpenPopupPicture = () => {
@@ -65,23 +66,24 @@ const handleDelete = (evt) => {
   evt.target.closest('.card').remove();
 }
 
-function overlayClosePopup(evt) {
-  const popup = Array.from(document.querySelectorAll('.popup'));
-  if (evt.currentTarget === evt.target) {
-    popup.forEach((popup) => {
+function overlayClosePopup() {
+  popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+        closePopup(popup)
+      }
+    })
+  })
+}
+
+function escapeClosePopup(evt) {
+  if (evt.key === 'Escape') {
+    popups.forEach((popup) => {
       closePopup(popup);
     })
   }
 }
 
-function escapeClosePopup(evt) {
-  const popup = Array.from(document.querySelectorAll('.popup'));
-  if (evt.key === 'Escape') {
-    popup.forEach((popup) => {
-      closePopup(popup);
-    })
-  }
-}
 
 function createCard(item) {
   const newElement = template.content.cloneNode(true);

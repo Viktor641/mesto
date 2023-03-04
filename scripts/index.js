@@ -12,13 +12,15 @@ const openProfilePopup = () => {
 };
 
 const handleEditButtonClick = () => {
+  openProfilePopup();
   nameInput.value = `${profileText.textContent}`;
   jobInput.value = `${profilParagraph.textContent}`;
-  openProfilePopup();
+  
 };
 
-const handleAddButtonClick = () => {
+const handleAddButtonClick = (config) => {
   openPopup(popupAddbutton);
+  formValidation(config);
 };
 
 const handleCloseButtonClick = () => {
