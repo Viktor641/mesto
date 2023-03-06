@@ -12,3 +12,9 @@
   justify-content: center;
   transition: all 0.8s ease 0s;
 }
+
+@media screen and (max-width: 768px) {
+  .popup {
+    cursor: none;
+  }
+}
