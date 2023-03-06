@@ -89,7 +89,6 @@ function createCard(item) {
   const newElement = template.content.cloneNode(true);
   const cardImage = newElement.querySelector(".card__image");
   const cardParagraph = newElement.querySelector(".card__paragraph");
-  const cardClose = newElement.querySelector(".card__close");
 
   cardParagraph.textContent = item.name;
   cardImage.src = item.link;
@@ -108,8 +107,6 @@ function createCard(item) {
     popupParagraph.textContent = item.name;
     toggleOpenPopupPicture();
   });
-
-  cardClose.addEventListener('keydown', escapeClosePopup);
 
   return newElement;
 }

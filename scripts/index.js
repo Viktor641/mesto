@@ -18,9 +18,8 @@ const handleEditButtonClick = () => {
   
 };
 
-const handleAddButtonClick = (config) => {
+const handleAddButtonClick = () => {
   openPopup(popupAddbutton);
-  formValidation(config);
 };
 
 const handleCloseButtonClick = () => {

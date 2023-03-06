@@ -1,7 +1,7 @@
 // включение валидации вызовом enableValidation
 // все настройки передаются при вызове
 
-const enableValidation = ({
+const formValidationConfig = ({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
@@ -15,7 +15,7 @@ function disabledSubmit(event){
   event.preventDefault();
 }
 
-function formValidation(config) {
+function enableValidation(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
 
   formList.forEach((form) => {
@@ -78,4 +78,4 @@ function setInputListeners(form, config) {
   });
 };
 
-formValidation(enableValidation);
+enableValidation(formValidationConfig);
