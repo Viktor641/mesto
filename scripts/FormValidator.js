@@ -1,7 +1,8 @@
 // включение валидации вызовом enableValidation
 // все настройки передаются при вызове
+import { Card } from './card.js'
 
-const formValidationConfig = ({
+export const formValidationConfig = ({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
@@ -9,6 +10,7 @@ const formValidationConfig = ({
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 });
+
 
 
 function disabledSubmit(event){
