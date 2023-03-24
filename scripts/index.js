@@ -1,4 +1,4 @@
-import { Card } from './card.js'
+import { Card } from './Card.js'
 import { FormValidator } from './FormValidator.js'
 
 
@@ -50,11 +50,21 @@ export const popupImage = document.querySelector('.popup__image');
 export const closeButtonPicture = document.querySelector(".popup__close_type_picture");
 export const popupPicture = document.querySelector(".popup_theme_picture");
 
-initialCards.forEach((element) => {
-  const newElement = new Card(element, '#card-template');
+
+
+
+function createCard(item) {
+  const newElement = new Card(item, '#card-template');
   const cardElement = newElement.generateCard()
+  return cardElement
+}
+
+initialCards.forEach((element) => {
+  const cardElement = createCard(element)
   cards.append(cardElement);
 });
+
+
 
 
 const titleInput = document.querySelector('.popup__input_type_title');
@@ -66,14 +76,11 @@ cardFormElement.addEventListener('submit', (evt) => {
   initialCards.name = titleInput.value;
   initialCards.link = linkInput.value;
 
-  const newElement = new Card(initialCards, '#card-template');
-  const cardElement = newElement.generateCard()
-
-  cards.prepend(cardElement);
+  cards.prepend(createCard(initialCards));
 
   evt.target.reset();
 
-  handleCloseButtonCardClick();
+  closeAddCardPopup();
 });
 
 const addCardValidation = new FormValidator(formValidationConfig, cardFormElement);
@@ -87,37 +94,32 @@ const profileCloseButton = document.querySelector(".popup__close");
 const closeButtonCard = document.querySelector(".popup__close_type_card");
 
 
+const popups = document.querySelectorAll('.popup');
 
-export const popups = document.querySelectorAll('.popup');
 
-
-export function openPopup(popups) {
-  popups.classList.add('popup_opened');
-  document.addEventListener('keydown', escapeClosePopup);
-  popups.addEventListener('mousedown', overlayClosePopup);
+export function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', handleEscape);
 };
 
-export function closePopup(popups) {
-  popups.classList.remove('popup_opened');
-  document.removeEventListener('keydown', escapeClosePopup);
-  popups.removeEventListener('mousedown', overlayClosePopup);
+export function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', handleEscape);
 };
 
-function overlayClosePopup() {
-  popups.forEach((popup) => {
-    popup.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('popup_opened')) {
-        closePopup(popup)
-      }
-    })
+
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup)
+    }
   })
-}
+})
 
-function escapeClosePopup(evt) {
+
+function handleEscape(evt) {
   if (evt.key === 'Escape') {
-    popups.forEach((popup) => {
-      closePopup(popup);
-    })
+    popups.forEach(closePopup)
   }
 }
 
@@ -136,18 +138,23 @@ const handleAddButtonClick = () => {
   openPopup(popupAddbutton);
 };
 
-const handleCloseButtonClick = () => {
+const closeProfilePopup = () => {
   closePopup(profilePopup);
 };
 
-export const handleCloseButtonCardClick = () => {
+const closeAddCardPopup = () => {
   closePopup(popupAddbutton);
+};
+
+const closeButtonPictureClick = () => {
+  closePopup(popupPicture);
 };
 
 editButton.addEventListener("click", handleEditButtonClick);
 addButton.addEventListener("click", handleAddButtonClick);
-profileCloseButton.addEventListener("click", handleCloseButtonClick);
-closeButtonCard.addEventListener("click", handleCloseButtonCardClick);
+profileCloseButton.addEventListener("click", closeProfilePopup);
+closeButtonCard.addEventListener("click", closeAddCardPopup);
+closeButtonPicture.addEventListener("click", closeButtonPictureClick);
 
 // Находим форму в DOM
 const profileForm = document.querySelector('.popup__form');
@@ -162,7 +169,7 @@ function handleProfileFormSubmit(evt) {
   profileText.textContent = `${nameInput.value}`;
   profilParagraph.textContent = `${jobInput.value}`;
 
-  handleCloseButtonClick();
+  closeProfilePopup();
 };
 
 profileForm.addEventListener('submit', handleProfileFormSubmit);

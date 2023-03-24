@@ -8,7 +8,7 @@ export class FormValidator {
     this._errorClass = config.errorClass;
     this._form = form;
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
-    this._formList = Array.from(document.querySelectorAll(this._formSelector));
+    this._submitButton = this._form.querySelector(this._submitButtonSelector);
   }
 
   _disabledSubmit(event) {
@@ -16,35 +16,33 @@ export class FormValidator {
   }
 
   enableValidation() {
-    this._formList.forEach((form) => {
-      form.addEventListener('submit', (this._disabledSubmit));
-      form.addEventListener('input', () => {
-        this._toggleButton(form);
-      })
-
-      form.addEventListener('reset', () => {
-        setTimeout(() => {
-          this._toggleButton();
-      }), '0'})
-
-      this._setInputListeners();
+    this._form.addEventListener('submit', (this._disabledSubmit));
+    this._form.addEventListener('input', () => {
       this._toggleButton();
-
     })
+
+    this._form.addEventListener('reset', () => {
+      setTimeout(() => {
+        this._toggleButton();
+      }), '0'
+    })
+
+    this._setInputListeners();
+    this._toggleButton();
+
   }
 
   _toggleButton() {
-    const buttonSubmit = this._form.querySelector(this._submitButtonSelector);
     const isFormValid = this._form.checkValidity();
-  
-    buttonSubmit.disabled = !isFormValid;
-  
+
+    this._submitButton.disabled = !isFormValid;
+
     if (!isFormValid) {
-      buttonSubmit.classList.add(this._inactiveButtonClass);
-      buttonSubmit.setAttribute("disabled", "");
+      this._submitButton.classList.add(this._inactiveButtonClass);
+      this._submitButton.setAttribute("disabled", "");
     } else {
-      buttonSubmit.classList.remove(this._inactiveButtonClass);
-      buttonSubmit.removeAttribute("disabled", "");
+      this._submitButton.classList.remove(this._inactiveButtonClass);
+      this._submitButton.removeAttribute("disabled", "");
     }
   }
 
@@ -52,7 +50,7 @@ export class FormValidator {
     const input = evt.target;
     const inputId = input.id;
     const ErrorElement = this._form.querySelector(`#${inputId}-error`);
-    
+
 
     if (input.validity.valid) {
       input.classList.remove(this._inputErrorClass);
@@ -70,6 +68,6 @@ export class FormValidator {
       item.addEventListener('input', (evt) => {
         this._isValid(evt);
       });
-    });
-  };
+    })
+  }
 }
