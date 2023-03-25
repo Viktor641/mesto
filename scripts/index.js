@@ -73,10 +73,11 @@ const linkInput = document.querySelector('.popup__input_type_link');
 cardFormElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
 
-  initialCards.name = titleInput.value;
-  initialCards.link = linkInput.value;
+  const item = {}
+  item.name = titleInput.value;
+  item.link = linkInput.value;
 
-  cards.prepend(createCard(initialCards));
+  cards.prepend(createCard(item));
 
   evt.target.reset();
 
