@@ -6,30 +6,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="body">
   <header class="header">
-    <img src="./images/header-logo.svg" alt="лого Место" class="header__logo">
+    <img src="<%=require('./images/header-logo.svg')%>" alt="лого Место" class="header__logo">
   </header>
   <main class="content">
     <section class="profile">
       <div class="profile__findings">
         <div class="profile__container">
-          <img src="./images/Jacques-Cousteau.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+          <img src="<%=require('./images/Jacques-Cousteau.jpg')%>" alt="Жак-Ив Кусто" class="profile__avatar">
           <div class="profile__info">
             <div class="profile__edit">
               <h1 class="profile__text">Жак-Ив Кусто</h1>
               <button type="button" class="profile__edit-btn button">
-                <img src="./images/EditButton.svg" alt="карандаш" class="profile__picture">
+                <img src="<%=require('./images/EditButton.svg')%>" alt="карандаш" class="profile__picture">
               </button>
             </div>
             <p class="profile__paragraph">Исследователь океана</p>
           </div>
         </div>
         <button type="button" class="profile__add-btn button">
-          <img src="./images/addButton.svg" alt="крестик" class="profile__btn-image">
+          <img src="<%=require('./images/addButton.svg')%>" alt="крестик" class="profile__btn-image">
         </button>
       </div>
     </section>
@@ -74,14 +73,14 @@
   </div>
   <div class="popup popup_theme_picture">
     <div class="popup__container popup__container_type_overlay">
-      <img src="./images/nikolay-vorobyev-o7jIzNWvCRo-unsplash.jpg" alt="картинка" class="popup__image">
+      <img src="<%=require('./images/nikolay-vorobyev-o7jIzNWvCRo-unsplash.jpg')%>" alt="картинка" class="popup__image">
       <button type="button" class="popup__close button popup__close_type_picture"></button>
       <h2 class="popup__paragraph"></h2>
     </div>
   </div>
   <template id="card-template">
     <div class="card">
-      <button class="card__close"><img src="./images/daniil-silantev-h-M3O25tyvI-unsplash.jpg" alt="Камчатка"
+      <button class="card__close"><img src="<%=require('./images/daniil-silantev-h-M3O25tyvI-unsplash.jpg')%>" alt="Камчатка"
           class="card__image"></button>
       <button type="button" class="card__delete"></button>
       <div class="card__item">

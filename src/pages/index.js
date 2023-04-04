@@ -10,6 +10,9 @@ import {
   titleInput, linkInput, nameInput, 
   jobInput } from '../utils/constants.js';
 
+import '../pages/index.css';
+
+
 
 
 

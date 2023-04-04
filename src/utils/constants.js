@@ -8,30 +8,38 @@ export const formValidationConfig = ({
 });
 
 
+const kamchatka = new URL('../images/daniil-silantev-h-M3O25tyvI-unsplash.jpg', import.meta.url);
+const altai = new URL('../images/pavel-marianov-xnS4IPCwFjg-unsplash(1).jpg', import.meta.url);
+const sudak = new URL('../images/nikolay-vorobyev-o7jIzNWvCRo-unsplash.jpg', import.meta.url);
+const sochi = new URL('../images/ana-kai-QXOl2IXJ_ow-unsplash.jpg', import.meta.url);
+const samara = new URL('../images/pavel-seliverstov-tXTiIjnLTrY-unsplash.jpg', import.meta.url);
+const irkutskOblast = new URL('../images/ekaterina-sazonova-eAZOKkEhzDg-unsplash.jpg', import.meta.url);
+
+
 export const initialCards = [
   {
     name: 'Камчатка',
-    link: './images/daniil-silantev-h-M3O25tyvI-unsplash.jpg'
+    link: kamchatka
   },
   {
     name: 'Алтай',
-    link: './images/pavel-marianov-xnS4IPCwFjg-unsplash(1).jpg'
+    link: altai
   },
   {
     name: 'Судак',
-    link: './images/nikolay-vorobyev-o7jIzNWvCRo-unsplash.jpg'
+    link: sudak
   },
   {
     name: 'Сочи',
-    link: './images/ana-kai-QXOl2IXJ_ow-unsplash.jpg'
+    link: sochi
   },
   {
     name: 'Самара',
-    link: './images/pavel-seliverstov-tXTiIjnLTrY-unsplash.jpg'
+    link: samara
   },
   {
     name: 'Иркутская область',
-    link: './images/ekaterina-sazonova-eAZOKkEhzDg-unsplash.jpg'
+    link: irkutskOblast
   }
 ];
 
