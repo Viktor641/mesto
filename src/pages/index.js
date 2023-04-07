@@ -7,8 +7,8 @@ import UserInfo from '../components/UserInfo.js';
 import { 
   formValidationConfig, initialCards, cardFormElement, 
   profileForm, addButton, editButton,
-  titleInput, linkInput, nameInput, 
-  jobInput } from '../utils/constants.js';
+  nameInput, jobInput 
+} from '../utils/constants.js';
 
 import '../pages/index.css';
 
@@ -23,10 +23,10 @@ const userInfo = new UserInfo({
 });
 
 const editProfilePopup = new PopupWithForm('.popup_theme_edit', {
-  handleFormSubmit: () => {
+  handleFormSubmit: (profileInput) => {
     userInfo.setUserInfo({
-      userName: `${nameInput.value}`,
-      userJob: `${jobInput.value}`
+      userName: profileInput.name,
+      userJob: profileInput.job
     });
     editProfilePopup.close();
   }
@@ -44,10 +44,10 @@ editButton.addEventListener('click', function () {
 
 
 const addCardPopup = new PopupWithForm('.popup_theme_addbutton', {
-  handleFormSubmit: () => {
+  handleFormSubmit: (addCardInput) => {
     renderInitialCards.addNewItem(createCard({
-      name: titleInput.value,
-      link: linkInput.value
+      name: addCardInput.title,
+      link: addCardInput.link
     }, handleCardClick));
     addCardPopup.close();
   }

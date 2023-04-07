@@ -49,8 +49,5 @@ export const profileForm = document.querySelector('.popup__form');
 export const addButton = document.querySelector('.profile__add-btn');
 export const editButton = document.querySelector(".profile__edit-btn");
 
-export const titleInput = document.querySelector('.popup__input_type_title');
-export const linkInput = document.querySelector('.popup__input_type_link');
-
 export const nameInput = document.querySelector('.popup__input_type_name');
 export const jobInput = document.querySelector('.popup__input_type_job');

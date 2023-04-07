@@ -28,19 +28,21 @@ export default class Card {
     return this._element;
   }
 
+  _likeCard(evt) {
+    evt.target.classList.toggle('card__like_active');
+  }
 
+  _deleteCard(evt) {
+    evt.target.closest('.card').remove();
+  }
 
   _setEventListeners() {
     this._cardImage.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);
     });
 
-    this._element.querySelector('.card__delete').addEventListener('click', (evt) => {
-      evt.target.closest('.card').remove();
-    })
+    this._element.querySelector('.card__delete').addEventListener('click', this._deleteCard)
 
-    this._element.querySelector('.card__like').addEventListener('click', (evt) => {
-      evt.target.classList.toggle('card__like_active');
-    });
+    this._element.querySelector('.card__like').addEventListener('click', this._likeCard);
   }
 }
