@@ -72,4 +72,4 @@ __5__. Добавление Элементов с помощью ```template```
 ```
 
 __Ссылка на проект__
-https://viktor641.github.io/mesto/index.html
+https://viktor641.github.io/mesto/
