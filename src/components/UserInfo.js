@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor({ userNameSelector, userJobSelector }) {
+  constructor({ userNameSelector, userJobSelector, avatarSelector }) {
     this._userName = document.querySelector(userNameSelector);
     this._userJob = document.querySelector(userJobSelector);
+    this._avatarLink = document.querySelector(avatarSelector);
   }
 
   getUserInfo() {
@@ -14,5 +15,9 @@ export default class UserInfo {
   setUserInfo({ userName, userJob }) {
     this._userName.textContent = userName;
     this._userJob.textContent = userJob;
+  }
+
+  setUserAvatar(avatarLink) {
+    this._avatarLink.src = avatarLink;
   }
 }
