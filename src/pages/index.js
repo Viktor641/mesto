@@ -46,10 +46,12 @@ const editProfilePopup = new PopupWithForm('.popup_theme_edit', {
       .then((res) => {
         userInfo.setUserInfo({ userName: res.name, userJob: res.about });
         editProfilePopup.close();
-        editProfilePopup.textSaving();
       })
       .catch((err) => {
         console.log(`При редактировании профиля произошла ошибка ${err}`);
+      })
+      .finally(() => {
+        editProfilePopup.textSaving();
       })
   }
 });
@@ -76,10 +78,12 @@ const addCardPopup = new PopupWithForm('.popup_theme_addbutton', {
       .then((card) => {
         renderInitialCards.addNewItem(renderCard(card));
         addCardPopup.close();
-        addCardPopup.textCreate();
       })
       .catch((err) => {
         console.log(`При добавлении карточки произошла ошибка ${err}`)
+      })
+      .finally(() => {
+        addCardPopup.textCreate();
       })
   }
 });
@@ -100,10 +104,12 @@ const popupChangeProfile = new PopupWithForm('.popup_theme_avatar', {
       .then((res) => {
         userInfo.setUserAvatar(res.avatar);
         popupChangeProfile.close();
-        popupChangeProfile.textSaving();
       })
       .catch((err) => {
         console.log(`При обновлении аватарки произошла ошибка ${err}`);
+      })
+      .finally(() => {
+        popupChangeProfile.textSaving();
       })
   }
 })
